@@ -1,0 +1,2 @@
+#python new_main.py --attack_only --attack_mode v --attack_al pgd --alpha 0.5 --iteration 6 --epsilon 5 --attacked_checkpoint logs/bs256.pth
+python main.py --attack_only --attack_mode v --attack_al pgd --alpha 0.5 --iteration 6 --epsilon 5 --attacked_checkpoint /home/tang/attack_on_VQA2.0-Recent-Approachs-2018/logs/baseline_train_ifgsm,sea_vq_e0.3_it2_a0.0625_w110_ad10_ld15_ade15_fr1.pth
