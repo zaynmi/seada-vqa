@@ -20,8 +20,8 @@ This repository corresponds to the ECCV 2020 paper *Semantic Equivalent Adversar
 - Prepare the data by running
 
 ```
-python preprocess-features.py
-python preprocess-vocab.py
+python data/preprocess-features.py
+python data/preprocess-vocab.py
 ```
 
 This creates an `h5py` database (95 GiB) containing the object proposal features and a vocabulary for questions and answers at the locations specified in `config.py`.
@@ -33,6 +33,8 @@ This creates an `h5py` database (95 GiB) containing the object proposal features
 
 
 ### Step 2: Adversarial training
+
+
 
 
 
