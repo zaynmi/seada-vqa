@@ -1,13 +1,13 @@
 import torch
-import utils
+from . import utils
 import config
 from torch.autograd import Variable
-import data
+from . import data
 import numpy as np
 import spacy
 
-from sea.paraphrase_scorer import ParaphraseScorer
-from sea import onmt_model, replace_rules
+from .sea.paraphrase_scorer import ParaphraseScorer
+from .sea import onmt_model, replace_rules
 
 # --- White-box attacks ---
 inter_feature = {}

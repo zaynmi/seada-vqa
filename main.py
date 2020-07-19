@@ -2,7 +2,7 @@ import argparse
 import config
 import torch.backends.cudnn as cudnn
 import torch
-from adversarial_vqa import AdversarialAttackVQA
+from seada.adversarial_vqa import AdversarialAttackVQA
 import warnings
 
 warnings.filterwarnings('ignore')

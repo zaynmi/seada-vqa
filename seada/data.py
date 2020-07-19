@@ -12,7 +12,7 @@ import torchvision.transforms as transforms
 import numpy as np
 
 import config
-import utils
+from . import utils
 
 
 preloaded_vocab = None

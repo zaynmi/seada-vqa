@@ -13,9 +13,9 @@ from torch.nn.utils import weight_norm
 from torch.nn.utils.rnn import pack_padded_sequence
 
 import config
-import word_embedding
+from . import word_embedding
 
-from reuse_modules import Fusion, FCNet
+from .reuse_modules import Fusion, FCNet
 
 class Net(nn.Module):
     def __init__(self, words_list):

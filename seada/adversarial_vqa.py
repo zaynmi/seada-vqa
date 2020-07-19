@@ -12,26 +12,15 @@ import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.nn.utils import clip_grad_norm_
 import config
-import data
-from attacks import FGSMAttack, IFGSMAttack, RandomNoise, SEA
+from . import data
+from .attacks import FGSMAttack, IFGSMAttack, RandomNoise, SEA
 if config.model_type == 'baseline':
-    import baseline_model as model
-elif config.model_type == 'inter_intra':
-    import inter_intra_model as model
-elif config.model_type == 'ban':
-    import ban_model as model
-elif config.model_type == 'counting':
-    import counting_model as model
-elif config.model_type == 'graph':
-    import graph_model as model
-elif config.model_type == 'my':
-    import my_model as model
-import utils
+    from .butd import baseline_model as model
+from . import utils
 
 
 class AdversarialAttackVQA:
     def __init__(self, args):
-        self.src = open(config.model_type + '_model.py').read()
         self.args = args
         if args.name:
             self.name = ' '.join(args.name)
@@ -40,7 +29,7 @@ class AdversarialAttackVQA:
                         (config.model_type, args.advtrain_data, args.attack_al, args.attack_mode, args.epsilon, args.iteration, args.alpha,
                          args.advloss_w, args.adv_delay, args.lr_decay, args.adv_end, args.samples_frac)
         self.target_name = os.path.join('logs', '{}.pth'.format(self.name))
-        self.src = open(config.model_type + '_model.py').read()
+        self.src = open(os.path.join('seada/butd', config.model_type + '_model.py')).read()
         self.config_as_dict = {k: v for k, v in vars(config).items() if not k.startswith('__')}
 
         self.attack_al = args.attack_al.split(',')

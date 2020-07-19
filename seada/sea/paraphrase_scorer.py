@@ -3,7 +3,7 @@ import time
 import os
 import copy
 import numpy as np
-from sea import onmt_model
+from . import onmt_model
 import onmt
 import collections
 import operator
