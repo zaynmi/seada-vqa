@@ -2,11 +2,12 @@
 qa_path = '/home/tang/attack_on_VQA2.0-Recent-Approachs-2018/data'  # directory containing the question and annotation jsons
 bottom_up_trainval_path = '/home/tang/trainval'  # directory containing the .tsv file(s) with bottom up features
 bottom_up_test_path = '/home/tang/test2015'  # directory containing the .tsv file(s) with bottom up features
-preprocessed_trainval_path = '/media/tang/新加卷/VQAv2/genome-trainval.h5'  # path where preprocessed features from the trainval split are saved to and loaded from
+preprocessed_trainval_path = 'data/genome-trainval.h5'  # path where preprocessed features from the trainval split are saved to and loaded from
 preprocessed_test_path = '/media/tang/新加卷/VQAv2/genome-test.h5'  # path where preprocessed features from the test split are saved to and loaded from
 vocabulary_path = '/home/tang/attack_on_VQA2.0-Recent-Approachs-2018/data/vocab.json'  # path where the used vocabularies for question and answers are saved to
 glove_index = 'data/dictionary.pkl'
 result_json_path = 'results.json'  # the path to save the test json that can be uploaded to vqa2.0 online evaluation server
+paraphrase_save_path = 'data/v2_OpenEnded_mscoco_train2014_questions_adv.json'
 
 task = 'OpenEnded'
 dataset = 'mscoco'

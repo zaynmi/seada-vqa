@@ -1,4 +1,4 @@
-import baseline_model as model
+from seada.butd import baseline_model as model
 import os.path
 import operator
 import copy
@@ -12,8 +12,9 @@ import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.nn.utils import clip_grad_norm_
 import config
-import data
-import utils
+from seada import data
+from seada import utils
+
 val_loader = data.get_loader(val=True, sea=True)
 logs = torch.load('logs/bs256.pth')
 question_keys = logs['vocab']['question'].keys()

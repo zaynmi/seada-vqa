@@ -1,0 +1,2 @@
+baseline_train_pgd,sea_vq_e0.3_it2_a0.5_w1_ad10_ld15_ade15_fr1
+0.6507568

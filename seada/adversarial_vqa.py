@@ -61,7 +61,12 @@ class AdversarialAttackVQA:
                 if self.attack_dict['sea'] is None and 'sea' in self.attack_al:
                     self.val_loader = data.get_loader(val=True, sea=True)
                 elif 'sea' in self.attack_al:
-                    self.val_loader = data.get_loader(train=True, vqacp=args.vqacp)
+                    if self.args.paraphrase_data == 'train':
+                        self.val_loader = data.get_loader(train=True)
+                    elif self.args.paraphrase_data == 'val':
+                        self.val_loader = data.get_loader(val=True)
+                    else:
+                        self.val_loader = data.get_loader(test=True)
                     self.adversarial.dataset = self.val_loader.dataset
                     self.questions_adv_saver = []
                 else:
@@ -242,7 +247,7 @@ class AdversarialAttackVQA:
                                acc_after_attack=fmt(perturbed_acc_tracker.mean.value),
                                distance=fmt(dist_tracker.mean.value))
         if self.args.attack_al == 'sea':
-            with open('data/vqacp/vqacp_v2_train_questions_adv.json', 'w') as f:
+            with open(config.paraphrase_save_path, 'w') as f:
                 json.dump({'questions': self.questions_adv_saver}, f)
         if len(self.attack_al) == 1:
             f = open('attack_log.txt', 'a')
@@ -359,7 +364,7 @@ class AdversarialAttackVQA:
                 loader.set_postfix(loss=fmt(loss_tracker.mean.value), acc=fmt(acc_tracker.mean.value))
             if self.args.advtrain_data != 'trainval':
                 r = self.evaluate(self.val_loader)
-                if epoch == config.advtrain_delay:
+                if epoch == self.args.adv_delay:
                     best_valid = 0
                 if sum(r[1]) / len(r[1]) > best_valid:
                     best_valid = sum(r[1]) / len(r[1])
@@ -409,7 +414,8 @@ class AdversarialAttackVQA:
         f.write(self.name + '\n')
         f.write(str(best_valid.data.cpu().numpy()))
         f.write('\n')
-        f.write(str((sum(results['eval']['adv_accuracies'])/len(results['eval']['adv_accuracies'])).data.cpu()))
+        if self.args.attacked_checkpoint:
+            f.write(str((sum(results['eval']['adv_accuracies'])/len(results['eval']['adv_accuracies'])).data.cpu()))
         f.write('\n')
 
     def advtrain_step(self, X, y, net, adversary, perturb_q):

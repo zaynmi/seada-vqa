@@ -3,6 +3,8 @@ __pycache__
 *.pth
 *.json
 *.jpg
+*.pt
+*.h5
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -39,4 +41,3 @@ cache/
 .mypy_caches
 *.model
 *.tsv
-*.txt

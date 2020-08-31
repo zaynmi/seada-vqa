@@ -15,7 +15,6 @@ def main():
     parser.add_argument('--generate_adv_example', action='store_true')
     parser.add_argument('--attacked_checkpoint', type=str, help='must be announced when attack only')
     parser.add_argument('--attack_al', type=str, default='ifgsm', help='attack algorithm')
-    parser.add_argument('--cooperate_q', action='store_true')
     parser.add_argument('--checkpoint', type=str)
     parser.add_argument('--resume', type=str)
     parser.add_argument('--attack_mode', default='v', choices=['v', 'q', 'vq', 'no'])
@@ -34,9 +33,10 @@ def main():
     parser.add_argument('--lr_decay', type=int, default=15)
     parser.add_argument('--topk', type=int, default=1)
     parser.add_argument('--fliprate', type=float, default=0)
+    parser.add_argument('--paraphrase_data', type=str, default='train', choices=['train', 'val', 'test'])
     parser.add_argument('--describe', type=str, default='describe your setting')
     args = parser.parse_args()
-    if args.attack_only or args.cooperate_q:
+    if args.attack_only:
         args.generate_adv_example = True
 
     if args.eval_advtrain or args.advtrain:
@@ -58,8 +58,6 @@ def main():
     attackvqa = AdversarialAttackVQA(args)
     if args.attack_only:
         attackvqa.attack(attackvqa.val_loader)
-    if args.cooperate_q:
-        attackvqa.find_q_adv(attackvqa.val_loader)
     if args.advtrain:
         attackvqa.advsarial_training()
 
