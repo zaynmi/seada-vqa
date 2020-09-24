@@ -73,7 +73,7 @@ This creates an `h5py` database (95 GiB) containing the object proposal features
 python main.py --attack_only --attack_mode q --attack_al sea --attacked_checkpoint {your_trained_model}.pth --fliprate 0.3 --topk 2 --paraphrase_data train
 ```
 
-This would generate paraphrases of train set with top-2 semantic similarity score and 30% flip rate considering `{your_trained_model}.pth`, and store them in `config.paraphrase_save_path`. Similarly, by setting `--paraphrase_data val`, you can get paraphrases of val set. Don't forget to change `config.paraphrase_save_path` accordingly. 
+This would generate paraphrases of train set with top-2 semantic similarity score and 30% flip rate considering `{your_trained_model}.pth` ([A BUTD model](https://drive.google.com/file/d/1mXm9R968zxzWz8GYkpRnn3k4yzgwcXdz/view?usp=sharing)), and store them in `config.paraphrase_save_path`. Similarly, by setting `--paraphrase_data val`, you can get paraphrases of val set. Don't forget to change `config.paraphrase_save_path` accordingly. 
 
 In our paper, we didn't specify the flip rate ,  topk and attacked_checkpoint (`--fliprate 0, --topk 1`), which means we simply use paraphrases with top-1 semantic similarity score.
 
@@ -136,10 +136,10 @@ The code is released under the [MIT License](https://github.com/zaynmi/semantic-
 If this repository is helpful for your research, we'd really appreciate it if you could cite the following paper:
 
 ```
-@article{tang2020semantic,
+@inproceedings{tang2020semantic,
   title={Semantic Equivalent Adversarial Data Augmentation for Visual Question Answering},
-  author={Tang, Ruixue and Ma, Chao and Zhang, Wei Emma and Wu, Qi and Yang, Xiaokang},
-  journal={arXiv preprint arXiv:2007.09592},
+  author={Tang, Ruixue and Ma,Chao and Zhang, Wei Emma and Wu, Qi and Yang, Xiaokang},
+  booktitle={European Conference on Computer Vision (ECCV)},
   year={2020}
 }
 ```
