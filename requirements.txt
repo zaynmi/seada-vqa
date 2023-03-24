@@ -9,7 +9,7 @@ six==1.14.0
 spacy==2.2.2
 tensorboard==1.14.0
 tensorboardX==1.8
-tensorflow==1.14.0
+tensorflow==2.11.1
 tensorflow-estimator==1.14.0
 torchtext==0.1.1
 tornado==6.0.3
