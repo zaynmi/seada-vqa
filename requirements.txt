@@ -3,7 +3,7 @@ editdistance==0.5.3
 h5py==2.8.0
 keras
 regex==2017.11.9
-requests==2.22.0
+requests==2.31.0
 retrying==1.3.3
 six==1.14.0
 spacy==2.2.2
