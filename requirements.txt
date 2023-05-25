@@ -12,6 +12,6 @@ tensorboardX==1.8
 tensorflow==1.14.0
 tensorflow-estimator==1.14.0
 torchtext==0.1.1
-tornado==6.0.3
+tornado==6.3.2
 tqdm==4.34.0
 yacs==0.1.6
